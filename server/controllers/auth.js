@@ -120,37 +120,6 @@ export const wardenLogin = async (req, res) => {
      }
 }
 
-// const mailer = (email, generatedOTP) => {
-//     const transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         host: "smtp.gmail.com",
-//         port: process.env.PORT || 5000,
-//         secure: false, 
-//         auth: {
-//           user: process.env.USER,
-//           pass: process.env.PASS,
-//         },
-//       });
-
-//       const mailOptions = {
-//         from: {
-//             name: 'RK-VALLEY Outpass-System',
-//             address: process.env.USER
-//         },
-//         to: email,
-//         subject: "OTP for user verification",
-//         html: `<h2>OTP for user verification</h2><p>Dear user, your OTP for email verification for ${email} is:</p><h3>${generatedOTP}</h3><p>Use this otp to verify your email and get registered to our Outpass Portal.<br></br>Please do not share this OTP with anyone for security reasons.<br></br>Thank You</p><br><p>Regards <br> <span><b>Team RK-VALLEY OUTPASS Portal</b></span></p>`,
-//       }
-
-//       transporter.sendMail(mailOptions), function(error, info) {
-//         if (error) {
-//             console.error(error);
-//         } else {
-//             console.log('Email sent' + info.response);
-//         }
-//     }
-// }
-
 
 const mailer = (email, generatedOTP) => {
     const transporter = nodemailer.createTransport({

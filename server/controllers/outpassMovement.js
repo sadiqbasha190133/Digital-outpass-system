@@ -2,6 +2,8 @@ import outpass from "../models/outpass.js";
 import Pending from '../models/PendingOutpass.js'
 import Previous from "../models/PrevOutpass.js";
 import Wardens from '../models/warden.js'
+import nodemailer from 'nodemailer'
+import { sendApproveMail, sendRejectMail } from "./sendMail.js";
 
 export const postAppliedOutpasses = async (req, res) => {
     const { enrollment } = req.body
@@ -47,7 +49,7 @@ export const approveOutpasses = async (req, res) => {
         if(!outpass){
             return res.status(404).json({message: "Outpass not found"})
         }
-        const { name, enrollment, room, duration, fromDate, toDate, hostel, purpose, address, outpassId } = outpass;
+        const { name, enrollment, room, duration, fromDate, toDate, hostel, purpose, address, outpassId, email } = outpass;
 
         const newOutpass = new Previous({
             name,
@@ -60,11 +62,14 @@ export const approveOutpasses = async (req, res) => {
             purpose,
             address,
             outpassId,
+            email,
             evaluation: true
         });
 
         await newOutpass.save();
         await Pending.deleteOne({ outpassId })
+        await sendApproveMail(email, outpass)
+        console.log("Action passed")
         return res.status(200).json("Outpass moved succesfully")
     } catch (error) {
         console.error("Error:", error)
@@ -79,7 +84,7 @@ export const rejectOutpasses = async (req, res) => {
         if(!outpass){
             return res.status(404).json({message: "Outpass not found"})
         }
-        const { name, enrollment, room, duration, fromDate, toDate, hostel, purpose, address, outpassId } = outpass;
+        const { name, enrollment, room, duration, fromDate, toDate, hostel, purpose, address, outpassId, email } = outpass;
 
         const newOutpass = new Previous({
             name,
@@ -92,11 +97,13 @@ export const rejectOutpasses = async (req, res) => {
             purpose,
             address,
             outpassId,
+            email,
             evaluation: false
         });
 
         await newOutpass.save();
         await Pending.deleteOne({ outpassId })
+        await sendRejectMail(email, outpass)
         return res.status(200).json("Outpass moved succesfully")
     } catch (error) {
         console.error("Error:", error)

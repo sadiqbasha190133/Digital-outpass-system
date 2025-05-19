@@ -36,7 +36,7 @@ const WardenPendingOutpass = ({outpass}) => {
                 <label htmlFor="fname" className="item-1">Name:
                     <input type="text" name="fname" value={outpass.name} className="sa-pass" disabled/>
                 </label>
-                <label htmlFor="enroll"className="item-2">Enrollment No. :
+                <label htmlFor="enroll"className="item-2">ID No. :
                     <input type="text" name="enroll" value={outpass.enrollment} className="sa-pass sa-enroll" disabled/>
                 </label>
                 <label htmlFor="from"className="item-3">From:

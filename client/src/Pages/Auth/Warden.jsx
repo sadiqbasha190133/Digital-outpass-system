@@ -28,11 +28,11 @@ const Warden = () => {
 
     const handleWardenRegister = async (e) => {
         e.preventDefault()
-        const isValidDomain = email.endsWith('@rguktrkv.ac.in');
-        if (!isValidDomain) {
-            toast.error("Invalid email, please enter JUET email Id")
-            return;
-        }
+        // const isValidDomain = email.endsWith('@rguktrkv.ac.in');
+        // if (!isValidDomain) {
+        //     toast.error("Invalid email, please enter RGUKT email Id")
+        //     return;
+        // }
         const response = await dispatch(wardenVerification({ employee, email }))
             if(response){
                 setIsSubmitted(true);
@@ -84,7 +84,7 @@ const Warden = () => {
                     <p>Already Registered? Login Now</p>
                     <div className="auth-box">
                         <form className="auth-2" onSubmit={handleWardenLogin}>
-                            <input type="text" placeholder="Employee Number" className="auth-inp uc" onChange={(e) => {setEmployee(e.target.value.toUpperCase())}} required/>
+                            <input type="text" placeholder="Warden Number/ID" className="auth-inp uc" onChange={(e) => {setEmployee(e.target.value.toUpperCase())}} required/>
                             <input type="password" placeholder="Password" className="auth-inp" onChange={(e) => {setPassword(e.target.value)}} required/>
                             <input type="submit" value="Login" className="auth-btn"/>
                         </form>
@@ -96,8 +96,8 @@ const Warden = () => {
                     <div className="auth-box">
                         <form className="auth-2" onSubmit={handleWardenRegister}>
                             <input type="text" placeholder="Full Name" className="auth-inp uc" onChange={(e) => {setName(e.target.value.toUpperCase())}} required/>
-                            <input type="text" placeholder="Employee Number" className="auth-inp uc" onChange={(e) => {setEmployee(e.target.value.toUpperCase())}} required/>
-                            <input type="email" placeholder="Email Address (@rguktrkv.ac.in)" className="auth-inp" onChange={(e) => {setEmail(e.target.value)}} required/>
+                            <input type="text" placeholder="Warden Number/ID" className="auth-inp uc" onChange={(e) => {setEmployee(e.target.value.toUpperCase())}} required/>
+                            <input type="email" placeholder="Email Address" className="auth-inp" onChange={(e) => {setEmail(e.target.value)}} required/>
                             <input type="password" placeholder="Password" className="auth-inp" onChange={(e) => {setPassword(e.target.value)}} required/>
                             <label htmlFor="hostel">Hostel No.
                                 <Select 

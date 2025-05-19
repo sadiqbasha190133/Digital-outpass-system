@@ -12,19 +12,21 @@ const WardenPendingOutpassDetails = () => {
     const dispatch = useDispatch()
 
     const outpassDetails = useSelector(state => state.outpassMovementReducer.data);
+    if (!outpassDetails?.fromDate || !outpassDetails?.toDate) {
+        return <div>Loading...</div>;
+    }
 
-    const from = new Date(outpassDetails.fromDate)
-    const fromDate = from.toLocaleDateString();
+    // const from = new Date(outpassDetails.fromDate)
+    // const fromDate = from.toLocaleDateString();
     
-    const to = new Date(outpassDetails.toDate)
-    const toDate = to.toLocaleDateString();
+    // const to = new Date(outpassDetails.toDate)
+    // const toDate = to.toLocaleDateString();
 
-    // const from = new Date(outpassDetails.fromDate);
-    // const fromDate = from.toISOString().slice(0, 10); // Formats the date as "yyyy-MM-dd"
+    const from = new Date(outpassDetails.fromDate);
+    const fromDate = from.toISOString().split('T')[0];
 
-    // const to = new Date(outpassDetails.toDate);
-    // const toDate = to.toISOString().slice(0, 10); // Formats the date as "yyyy-MM-dd"
-
+    const to = new Date(outpassDetails.toDate);
+    const toDate = to.toISOString().split('T')[0];
 
     const handleApproved = () => {
         const outpassId = outpassDetails.outpassId

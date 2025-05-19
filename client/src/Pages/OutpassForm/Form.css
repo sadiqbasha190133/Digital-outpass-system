@@ -44,6 +44,11 @@
     font-style: italic;
 }
 
+.email{
+    padding: 13px;
+    text-align: center;
+}
+
 .fname{
     grid-column: 1 / span 4;
     grid-row: 2;

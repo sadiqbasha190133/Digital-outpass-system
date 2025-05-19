@@ -26,11 +26,11 @@ const WardenForgotPassword = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(!isDetailSub){
-            const isValidDomain = email.endsWith('@rguktrkv.ac.in');
-            if (!isValidDomain) {
-                toast.error("Invalid email, please enter RGUKT email Id")
-                return;
-            }
+            // const isValidDomain = email.endsWith('@rguktrkv.ac.in');
+            // if (!isValidDomain) {
+            //     toast.error("Invalid email, please enter RGUKT email Id")
+            //     return;
+            // }
             const response = await dispatch(sendWardenOtp({employee, email}))
             if(response){
                 setIsDetailSub(true) 

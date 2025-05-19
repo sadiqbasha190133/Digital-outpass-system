@@ -42,6 +42,7 @@ export const showWardenPendingOutpasses = (movementData) => async (dispatch) => 
 export const approveOutpass = (movementData, navigate) => async (dispatch) => {
     try {
         const { data } = await api.approveOutpasses(movementData)
+        console.log(data)
         dispatch({type: 'MOVE_APPROVED_OUTPASS', payload: data})
         navigate('/WardenHomePage')
         toast.success('Outpass approved succesfully')
