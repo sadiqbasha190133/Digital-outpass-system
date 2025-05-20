@@ -13,9 +13,13 @@ Digital Outpass System is a web portal designed to facilitate the generation of 
 
 ![outpass_form](images/outpass_form_new.png)
 
+![warden_home](images/outpass_details.png)
+
 ![warden_signup](images/warden_signup.png)
 
 ![warden_home](images/warden_home.png)
+
+![warden_home](images/previous_outpasses.png)
 
 ![outpass_pending_details](images/outpass_pending_details.png)
 
