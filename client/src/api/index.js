@@ -1,6 +1,7 @@
 import axios from 'axios'
+//http://localhost:5000
+const API = axios.create({baseURL: process.env.REACT_APP_BACKEND_URL})
 
-const API = axios.create({baseURL: `http://localhost:5000`})
 
 export const studentVerification = (authData) => API.post('/student/verify', authData)
 export const studentLogIn = (authData) => API.post('/student/login', authData)
