@@ -28,9 +28,9 @@ const Student = () => {
 
     const handleStudentRegister = async (e) => {
         e.preventDefault();
-        const isValidDomain = email.endsWith('@rguktrkv.ac.in');
+        const isValidDomain = email.endsWith('gmail.com');
         if (!isValidDomain) {
-            toast.error("Invalid email, please enter rgukt email Id")
+            toast.error("Invalid email, please enter valid email Id that ends with gmail.com");
             return;
         }
         const response = await dispatch(studentVerification({ enrollment, email }))
@@ -95,7 +95,7 @@ const Student = () => {
                                 <form className="auth-2" onSubmit={handleStudentRegister}>
                                     <input type="text" placeholder="Full Name" className="auth-inp uc" onChange={(e) => {setName(e.target.value.toUpperCase())}} required/>
                                     <input type="text" placeholder="ID NO:" className="auth-inp uc" onChange={(e) => {setEnrollment(e.target.value.toUpperCase())}} required/>
-                                    <input type="email" placeholder="Email Address (@rguktrkv.ac.in)" className="auth-inp" onChange={(e) => {setEmail(e.target.value)}} required/>
+                                    <input type="email" placeholder="Email Address (@gmail.com)" className="auth-inp" onChange={(e) => {setEmail(e.target.value)}} required/>
                                     <input type="password" placeholder="Password" className="auth-inp" onChange={(e) => {setPassword(e.target.value)}} required/>
                                     <label htmlFor="hostel">Hostel No.
                                         <Select 
