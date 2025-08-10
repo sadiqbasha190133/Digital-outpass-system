@@ -20,10 +20,13 @@ const Warden = () => {
     const [otp, setOtp] = useState(0)
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [selectedOption, setSelectedOption] = useState('')
+    const [status, setStatus] = useState(false)
 
-    const handleWardenLogin = (e) => {
+    const handleWardenLogin = async (e) => {
         e.preventDefault()
-        dispatch(wardenLogIn({ employee, password }, navigate))
+        setStatus(true)
+        await dispatch(wardenLogIn({ employee, password }, navigate))
+        setStatus(false)
     }
 
     const handleWardenRegister = async (e) => {
@@ -65,6 +68,7 @@ const Warden = () => {
             <div className="auth">
                 <h1>Welcome</h1>
                 <h2>Please login using your RK-VALLEY credentials</h2>
+                {status?<div className="spinner"></div>:null}
             </div>
             <div className="auth-container">
                 {isSubmitted ? (

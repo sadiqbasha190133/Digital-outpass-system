@@ -27,6 +27,7 @@ export const studentSignUp = (authData, navigate) => async (dispatch) => {
 
 export const studentLogIn = (authData, navigate) => async (dispatch) => {
     try {
+        
         const { data } = await api.studentLogIn(authData)
         dispatch({type: 'AUTH', data})
         dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))

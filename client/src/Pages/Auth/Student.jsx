@@ -20,10 +20,13 @@ const Student = () => {
     const [otp, setOtp] = useState(0)
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [selectedOption, setSelectedOption] = useState('')
+    const [status, setStatus] = useState(false)
 
-    const handleStudentLogin = (e) => {
+    const handleStudentLogin = async(e) => {
         e.preventDefault()
-        dispatch(studentLogIn({ enrollment, password }, navigate))
+        setStatus(true)
+        await dispatch(studentLogIn({ enrollment, password }, navigate))
+        setStatus(false)
     }
 
     const handleStudentRegister = async (e) => {
@@ -63,6 +66,7 @@ const Student = () => {
             <div className="auth">
                 <h1>Welcome</h1>
                 <h2>Please login using your RK-VALLEY credentials</h2>
+                {status?<div className="spinner"></div>:null}
             </div>
             <div className="auth-container">
                 {isSubmitted ? (
@@ -89,6 +93,7 @@ const Student = () => {
                             </div>
                             <p id="fp" onClick={() => navigate('/StudentForgotPassword')}>Forgot Password?</p>
                         </div>
+
                         <div className="auth-container-2">
                             <p>Still didn't registered? Register Here</p>
                             <div className="auth-box">
@@ -153,7 +158,9 @@ const Student = () => {
                         </div>
                     </>
                 )}
+                
             </div>
+            
         </div>
     )
 }
